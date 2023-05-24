@@ -10,6 +10,7 @@ function resetModal(){
     document.getElementById("btnThemNV").disabled = false;
     document.getElementById("password").disabled = false;
     document.getElementById("btnCapNhat").disabled = true;
+    document.getElementById("btnViewPass").style.display = "inline-block";
     fillFormInfo("","","","","","","","");
 }
 
@@ -91,10 +92,12 @@ function editNhanVien(tknv){
         var nhanVien = arrNhanVien[i];
         if(nhanVien.TKNV == tknv){
             fillFormInfo(nhanVien.TKNV,nhanVien.name,nhanVien.email,nhanVien.matKhau,nhanVien.ngayLam,nhanVien.luong,nhanVien.chucVu,nhanVien.gioLam);
-
+            
+            document.getElementById('password').type = "password";
             document.getElementById("tknv").disabled = true;
             document.getElementById("btnThemNV").disabled = true;
             document.getElementById("password").disabled = true;
+            document.getElementById("btnViewPass").style.display = "none";
             document.getElementById("btnCapNhat").disabled = false;
             document.getElementById("btnCapNhat").onclick = capNhatNhanVien;
         }
@@ -119,8 +122,8 @@ function capNhatNhanVien(){
 // clear error message when leave modal
 
 document.getElementById("myModal").onhidden = function(){
-    document.querySelectorAll(".form-group span").forEach(function(span){
-        span.style.display = "none";
+    document.querySelectorAll(".form-group input").forEach(function(input){
+        input.value = "";
     })
 }
 
@@ -161,3 +164,16 @@ function timNhanVien(){
 }
 
 document.getElementById("btnTimNV").onclick = timNhanVien;
+
+
+function toggleVisibility() {
+    const passwordInput = document.getElementById('password');
+    
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+
+document.getElementById("btnViewPass").onclick = toggleVisibility;
