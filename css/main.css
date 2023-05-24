@@ -29,5 +29,15 @@
   background-color: #c8cbce;
 }
 
+.viewPass {
+  background-color: #fff;
+  color: #495057;
+  border: 1px solid #ced4da;
+  cursor: pointer;
+}
+
+.viewPass:hover{
+  background-color: #c8cbce;
+}
 
 
